@@ -1,0 +1,111 @@
+<div class="container">
+    <h4 class="my-2">Book Your Car</h4>
+    <div class="row align-items-start">
+        <div class="card col-4">
+            <div class="card-header fw-bold">BOOKING</div>
+            <form (ngSubmit)="onSubmit()" [formGroup]="data">
+                <div class="row">
+                    <div class="col-6">
+                        <label class="mx-2">CustomerName</label>
+                        <input type="text"  placeholder="name" class="form-control" formControlName="CustomerName"/>
+                    </div>
+                    <div class="col-6">
+                        <label>Model</label>
+                        <input type="text" placeholder="model" class="form-control" formControlName="model">
+                    </div>
+                </div>    
+                
+                <div class="row">
+                    <div class="col-6">
+                        <label class="mx-2">MobileNo</label>
+                        <input type="text" placeholder="mobileno" class="form-control" formControlName="MobileNo"/>
+                    </div>
+                    <div class="col-6">
+                        <label>Email</label>
+                        <input type="text" placeholder="email" class="form-control" formControlName="Email"/>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-6">
+                        <label class="mx-2">BookingDate</label>
+                        <input type="date" placeholder="bookingdate" class="form-control" formControlName="BookingDate"/>
+                    </div>
+                     <div class="col-6">
+                        <label>CarRegNo</label>
+                        <!-- <input type="text" placeholder="carId" class="form-control" formControlName="CarId"/> -->
+                        <select class="form-select" formControlName="CarId">
+                            <option value="">Select Car</option>
+                            <option *ngFor="let vel of vehicles" [value]="vel.carId">{{vel.regNo}}</option>
+                         </select>
+                    </div> 
+                </div>
+                
+                <div class="row">
+                    <div class="col-6">
+                        <label class="mx-2">TotalAmount</label>
+                        <input type="text" placeholder="amount" class="form-control my-2" formControlName="TotalBillAmount"/>
+                    </div>
+                    <div class="col-6">
+                        <label>Discount</label>
+                        <input type="text" placeholder="discount" class="form-control" formControlName="Discount"/>
+                    </div>
+                </div>
+                
+                <div class="display">
+                    <button type="submit" class="btn btn-warning btn-sm my-2">BOOK</button>
+                </div>
+            </form>
+        </div>
+
+         <div class="col-md-8">
+            <div class="card">
+                <div class="card-header text-white" style="background-color:black">
+                    <h5>BOOKING LIST</h5>
+                </div>
+
+                <div class="card-body">
+                    <div class="row g-3">
+                        <div class="col-md-3" *ngFor="let bok of booking">
+                            <div class="card" style="background-color: aliceblue;">
+                                <div class="card-header">
+                                      <!-- <img [src]="bok.carImage" class="card-img-top" alt="Car image"/> -->
+                                        <img [src]="getCarImage(bok)" class="card-img-top" alt="Car image"/>
+                                </div>
+                                <div class="card-body">
+                                    <p><strong>Name:</strong>{{bok.customerName}}</p>
+                                    <p><strong>Model:</strong>{{bok.model}}</p>
+                                    <p><strong>MobNo:</strong>{{bok.mobileNo}}</p>
+                                    <p><strong>Date:</strong>{{bok.bookingDate | date:'short'}}</p>
+                                    <p><strong>Total:</strong>{{bok.totalBillAmount}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+       <!-- <table border="1" class="table table-bordered mt-3">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Mobile</th>
+      <th>Date</th>
+      <th>Total</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let bok of booking">
+      <td>{{ bok.customerName }}</td>
+      <td>{{ bok.mobileNo }}</td>
+      <td>{{ bok.bookingDate | date:'short' }}</td>
+      <td>{{ bok.totalBillAmount }}</td>
+    </tr>
+  </tbody>
+</table> -->
+
+    </div>
+</div>
+

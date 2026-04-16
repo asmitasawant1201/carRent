@@ -1,0 +1,30 @@
+<div>
+    <nav class="navbar navbar-expand-lg bg-dark shadow-sm">
+       <div class="container-fluid" >
+        <a class="navbar-brand text-white" routerLink="/">CARS DATA</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+       </div>
+       <div id="navbarNav">
+        <ul class="d-flex gap-3">
+            <li>
+                <a routerLink="/dashboard">DASHBOARD</a>
+            </li>
+             <li>
+                <a routerLink="/vehicle">VEHICLES</a>
+            </li>
+             <li>
+                <a routerLink="/customers">CUSTUMERS</a>
+            </li>
+             <li>
+                <a routerLink="/booking">BOOKING</a>
+            </li>
+        </ul>
+        <div>
+            <button class="display btn btn-outline-light" (click)="onLogout()">Logout</button>
+        </div>
+       </div>
+    </nav>
+</div>
+<router-outlet></router-outlet>

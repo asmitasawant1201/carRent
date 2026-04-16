@@ -1,0 +1,115 @@
+
+<div class="container">
+  <input type="text" placeholder="search by brand or model" (input)="applysearch()" [(ngModel)]="search"/>
+
+   <h3>All CARS</h3>
+  <div class="btn-wrapper">
+    <button class="btn btn-primary  btn-sm mb-2 "
+    data-bs-toggle="modal" data-bs-target="#myModal" (click)="onAddVehicle()"
+   >
+      Add Vehicle
+    </button>
+  </div>
+
+  <table class="table">
+    <thead class="table-light">
+      <tr>
+        <th>Car-Id</th>
+        <th>Brand</th>
+        <th>Model</th>
+        <th>Year</th>
+        <th>Color</th>
+        <th>DailyRate</th>
+        <th>RegNo</th>
+        <th>CarImage</th>
+        <th>Actions</th>
+     </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let vel of allvehicles">
+        <td>{{ vel.carId}}</td>
+        <td>{{ vel.brand }}</td>
+        <td>{{ vel.model }}</td>
+        <td>{{ vel.year }}</td>
+        <td>{{ vel.color }}</td>
+        <td>{{ vel.dailyRate }}</td>
+        <td>{{ vel.regNo }}</td>
+        <td>
+          <img [src]="vel.carImage" class="card-img-top" alt="Image">
+        </td>
+        <td>
+        <button class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#myModal"  (click)="onClickEdit(vel)">Edit</button>
+        <button class="btn btn-danger btn-sm" (click)="onClickDelete(vel.carId)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="d-flex justify-content-center">
+    <button (click)="clickPrivious()" class="mx-4 btn btn-sm btn btn-warning">Previous</button>
+    <span>CurrentPage:{{currentPage}}</span>
+    <button (click)="clickNext()" class="mx-4 btn btn-sm btn btn-warning">Next</button>
+  </div>
+
+  <div>
+    <div class="modal fade" id="myModal" tabindex="-1">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header justify-content-center">
+            <div class="modal-title fw-bold">{{formTitle}}</div>
+             <button
+               type="button" class="btn-close" data-bs-dismiss="modal">
+             </button>
+          </div>
+          <div class="modal-body">
+            <form (ngSubmit)="onsubmit()">
+              <div class="mb-3">
+              <label class="mx-3 fw-bold">Brand</label>
+              <input type="text" placeholder="enter brand" class="form-control mb-2" [(ngModel)]="userData.brand" name="brand" aria-label="Brand" />
+              </div>
+
+              <div class="mb-3">
+              <label class="mx-3 fw-bold">Model</label>
+              <input type="text" placeholder="enter model"  class="form-control mb-2" [(ngModel)]="userData.model" name="Model" />
+              </div>
+
+              <div class="mb-3">
+              <label class="mx-3 fw-bold">Year</label>
+              <input type="text" placeholder="enter year"  class="form-control mb-2" [(ngModel)]="userData.year" name="Year" />
+              </div>
+
+              <div class="mb-3">
+              <label class="mx-3 fw-bold">Color</label>
+              <input type="text" placeholder="enter color"  class="form-control mb-2" [(ngModel)]="userData.color" name="color" />
+              </div>
+
+              <div class="mb-3 fw-bold">
+              <label class="mx-3 fw-bold">dailyRate</label>
+              <input type="text" placeholder="enter dailyRate" class="form-control mb-2" [(ngModel)]="userData.dailyRate" name="dailyRate" />
+              </div>
+              
+              <div class="mb-3">
+              <label class="mx-3 fw-bold">RegNo</label>
+              <input type="text" placeholder="enter regNo" class="form-control mb-2" [(ngModel)]="userData.regNo" name="RegNo" />
+              </div>
+
+              <div class="mb-3">
+              <label class="mx-3 fw-bold">CarImage</label>
+              <input type="file"  alt="image"  [(ngModel)]="userData.carImage" name="RegNo"/>
+              </div>
+              
+                <div class="modal-footer">
+                <button class="btn btn-secondary" (click)="onClickcancle()">cancle</button>
+                <button class="btn btn-warning" data-bs-dismiss="modal" type="submit">{{onEdit ? 'Update' : 'Add'}} </button>
+               </div>
+            </form>
+          </div>
+         
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+</div>
+
+

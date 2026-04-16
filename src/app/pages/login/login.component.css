@@ -1,0 +1,35 @@
+.lab{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+.card{
+    height: auto;
+    max-width: 400px;   /* you can change this */
+    margin: auto;  
+}
+/* .btn{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+} */
+ .center-btn {
+  text-align: center;
+}
+.input-icon {
+  position: relative;
+}
+
+.input-icon i {
+  position: absolute;
+  top: 50%;
+  left: 12px;
+  transform: translateY(-50%);
+  color: #6c757d;
+  pointer-events: none; /* click goes to input */
+}
+
+.input-icon input {
+  padding-left: 40px; /* space for icon */
+}
+

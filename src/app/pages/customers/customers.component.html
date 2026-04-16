@@ -1,0 +1,62 @@
+<div class="container">
+    <h3>All CUSTOMERS</h3>
+    <div class="btn-wrapper">
+        <button class="btn btn-dark btn-sm mb-2" data-bs-toggle="modal" data-bs-target="#openModal" (click)="onClickAdd()">ADD CUSTOMER</button>
+    </div>
+    <table class="table table-bordered table-hover width:100px">
+        <thead class="table-dark text-align: center">
+            <tr>
+                <th>Customer-Id</th>
+                <th>Customer-Name</th>
+                <th>Customer-City</th>
+                <th>Email</th>
+                <th>Mob-No</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor=" let cus of customers;let i=index">         
+                <td>{{i+1}}</td>
+                <td>{{cus.customerName}}</td>
+                <td>{{cus.customerCity}}</td>
+                <td>{{cus.mobileNo}}</td>
+                <td>{{cus.email}}</td>
+                <td>
+                    <button class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#openModal" (click)="onClickEdit(cus)">EdIT</button> 
+                    <button class="btn btn-danger btn-sm" (click)="onClickDelete(cus.id)">DELETE</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div>
+    <div class="modal fade" id="openModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title">{{formTitle}}</h3>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form (submit)="onSubmit()">
+                        <label>Customer-Name</label>
+                        <input type="text" class="form-control" placeholder="enter name" [(ngModel)]="cusData.customerName" name="name"/>
+                        <label>Customer-City</label>
+                        <input type="text" placeholder="enter city" class="form-control" [(ngModel)]="cusData.customerCity" name="city"/>
+                        <label>Email</label>
+                        <input type="text" placeholder="enter email" class="form-control" [(ngModel)]="cusData.email" name="email"/>
+                        <label>Mob.No</label>
+                        <input type="text" placeholder="enter mob.no" class="form-control" [(ngModel)]="cusData.mobileNo" name="mobno"/>
+                        <div class="modal-footer">
+                            <button class="btn btn-secondary" data-bs-dismiss="modal">Cancle</button>
+                            <button class="btn btn-warning" data-bs-dismiss="modal" type="submit">{{clickEdit ? 'UPDATE' : 'ADD'}}</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
