@@ -1,0 +1,90 @@
+<div class="container">
+    <mat-card>
+      
+        <mat-card-content>
+             <h3 class="mb-3 my-2 lab">REGISTRATION FORM</h3>
+            <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+                <div class="row">
+                    <div class="col-4">
+                        <mat-form-field appearance="outline">
+                            <mat-label>FullName</mat-label>
+                            <input matInput placeholder="Enter your name" formControlName="fullName">
+                        </mat-form-field>
+                    </div>
+
+                    <div class="col-4">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Email</mat-label>
+                            <input matInput placeholder="Enter your email" formControlName="email">
+                        </mat-form-field>
+                    </div>
+
+                    <div class="col-4">
+                        <mat-form-field appearance="outline">
+                            <mat-label>MobileNo</mat-label>
+                            <input matInput placeholder="Enter your mobile number" formControlName="mobileNo">
+                        </mat-form-field>
+                    </div>
+                    
+                </div>
+
+
+                 <div class="row">
+                     <div class="row">
+                    <div class="col-4">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Password</mat-label>
+                            <input matInput placeholder="Enter your password" formControlName="password" type="password">
+                        </mat-form-field>
+                    </div>
+
+                    <div class="col-4">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Confirm Password</mat-label>
+                            <input matInput placeholder="Confirm your password" formControlName="confirmPassword" type="password">
+                        </mat-form-field>
+                    </div>
+
+                    <div class="col-4">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Gender</mat-label>
+                            <input matInput placeholder="Enter your gender" formControlName="gender">
+                        </mat-form-field>
+                    </div>
+                    
+                </div>
+                   
+                    
+                </div>
+
+                 <div class="row">
+                    <div class="col-4">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Country</mat-label>
+                            <input matInput placeholder="Enter your country" formControlName="country">
+                        </mat-form-field>
+                    </div>
+                    
+                    <div class="col-4">
+                        <mat-form-field appearance="outline">
+                            <mat-label>State</mat-label>
+                            <input matInput placeholder="Enter your state" formControlName="state">
+                        </mat-form-field>
+                    </div>
+                    
+                    <div class="col-4">
+                        <mat-form-field appearance="outline">
+                            <mat-label>City</mat-label>
+                            <input matInput placeholder="Enter your city" formControlName="city">
+                        </mat-form-field>
+                    </div>
+                </div>
+
+                <div class="container">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
+        </mat-card-content>
+    </mat-card>
+</div>
+

@@ -6,7 +6,8 @@ import { LoginComponent } from './pages/login/login.component';
 import { LayoutComponent } from './pages/layout/layout.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { BookingComponent } from './pages/booking/booking.component';
-import { authGuard } from './auth.guard';
+import { RegistrationComponent } from './pages/registration/registration.component';
+// import { authGuard } from './auth.guard';
 
 export const routes: Routes = [
     {
@@ -20,10 +21,17 @@ export const routes: Routes = [
          component:LoginComponent
 
     },
+
+    {    
+         path:'registration',
+         component:RegistrationComponent
+
+    },
+
     {
         path:'',
         component:LayoutComponent,
-        canActivate: [authGuard],       // ✅ protects direct URL access
+        // canActivate: [authGuard],       // ✅ protects direct URL access
     // canActivateChild: [authGuard], 
       
 
@@ -31,8 +39,8 @@ export const routes: Routes = [
             {path:'dashboard',component:DashboardComponent },
             {path:'vehicle',component:VehicalComponent},
             {path:'customers',component:CustomersComponent},
-            {path:'booking',component:BookingComponent}
-        ]
+            {path:'booking',component:BookingComponent},
+           ]
     }
 ]
 

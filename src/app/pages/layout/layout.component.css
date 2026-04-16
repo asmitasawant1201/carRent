@@ -1,6 +1,5 @@
 .display{
-    display: flex;
-    flex-direction: row;
-    justify-content: end;
-    align-items: end;
+    margin-left: auto;
+    display: block;
+    margin-right: 20px;
 }
