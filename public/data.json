@@ -1,0 +1,199 @@
+
+
+[
+  {
+    "id": 1,
+    "countryName": "India",
+    "states": [
+      {
+        "id": 101,
+        "stateName": "Maharashtra",
+        "cities": [
+          { "id": 1001, "cityName": "Mumbai" },
+          { "id": 1002, "cityName": "Pune" },
+          { "id": 1003, "cityName": "Nagpur" }
+        ]
+      },
+      {
+        "id": 102,
+        "stateName": "Karnataka",
+        "cities": [
+          { "id": 1004, "cityName": "Bangalore" },
+          { "id": 1005, "cityName": "Mysore" }
+        ]
+      },
+      {
+        "id": 103,
+        "stateName": "Rajasthan",
+        "cities": [
+          { "id": 1006, "cityName": "Jaipur" },
+          { "id": 1007, "cityName": "Udaipur" }
+        ]
+      },
+      {
+        "id": 104,
+        "stateName": "Uttar Pradesh",
+        "cities": [
+          { "id": 1008, "cityName": "Lucknow" },
+          { "id": 1009, "cityName": "Kanpur" }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "countryName": "USA",
+    "states": [
+      {
+        "id": 201,
+        "stateName": "California",
+        "cities": [
+          { "id": 2001, "cityName": "Los Angeles" },
+          { "id": 2002, "cityName": "San Francisco" }
+        ]
+      },
+      {
+        "id": 202,
+        "stateName": "Texas",
+        "cities": [
+          { "id": 2003, "cityName": "Houston" },
+          { "id": 2004, "cityName": "Dallas" }
+        ]
+      },
+      {
+        "id": 203,
+        "stateName": "New York",
+        "cities": [
+          { "id": 2005, "cityName": "New York City" },
+          { "id": 2006, "cityName": "Buffalo" }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "countryName": "Canada",
+    "states": [
+      {
+        "id": 301,
+        "stateName": "Ontario",
+        "cities": [
+          { "id": 3001, "cityName": "Toronto" },
+          { "id": 3002, "cityName": "Ottawa" }
+        ]
+      },
+      {
+        "id": 302,
+        "stateName": "Alberta",
+        "cities": [
+          { "id": 3003, "cityName": "Calgary" },
+          { "id": 3004, "cityName": "Edmonton" }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "countryName": "Australia",
+    "states": [
+      {
+        "id": 401,
+        "stateName": "Queensland",
+        "cities": [
+          { "id": 4001, "cityName": "Brisbane" },
+          { "id": 4002, "cityName": "Gold Coast" }
+        ]
+      },
+      {
+        "id": 402,
+        "stateName": "Western Australia",
+        "cities": [
+          { "id": 4003, "cityName": "Perth" }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "countryName": "Germany",
+    "states": [
+      {
+        "id": 501,
+        "stateName": "Bavaria",
+        "cities": [
+          { "id": 5001, "cityName": "Munich" },
+          { "id": 5002, "cityName": "Nuremberg" }
+        ]
+      },
+      {
+        "id": 502,
+        "stateName": "Hesse",
+        "cities": [
+          { "id": 5003, "cityName": "Frankfurt" }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "countryName": "France",
+    "states": [
+      {
+        "id": 601,
+        "stateName": "Île-de-France",
+        "cities": [
+          { "id": 6001, "cityName": "Paris" }
+        ]
+      },
+      {
+        "id": 602,
+        "stateName": "Provence",
+        "cities": [
+          { "id": 6002, "cityName": "Marseille" }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "countryName": "Japan",
+    "states": [
+      {
+        "id": 701,
+        "stateName": "Tokyo",
+        "cities": [
+          { "id": 7001, "cityName": "Shinjuku" },
+          { "id": 7002, "cityName": "Shibuya" }
+        ]
+      },
+      {
+        "id": 702,
+        "stateName": "Osaka",
+        "cities": [
+          { "id": 7003, "cityName": "Osaka City" }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "countryName": "Brazil",
+    "states": [
+      {
+        "id": 801,
+        "stateName": "São Paulo",
+        "cities": [
+          { "id": 8001, "cityName": "São Paulo" }
+        ]
+      },
+      {
+        "id": 802,
+        "stateName": "Rio de Janeiro",
+        "cities": [
+          { "id": 8002, "cityName": "Rio de Janeiro" }
+        ]
+      }
+    ]
+  }
+]
+
