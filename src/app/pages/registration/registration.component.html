@@ -1,14 +1,18 @@
 <div class="container">
     <mat-card>
-    <mat-card-content>
-             <h3 class="mb-3 my-2 lab">REGISTRATION FORM</h3>
+        <mat-card-content>
+            <h3 class="mb-3 my-2 lab">REGISTRATION FORM</h3>
             <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
-
                 <div class="row">
                     <div class="col-4">
                         <mat-form-field appearance="outline">
                             <mat-label>FullName</mat-label>
                             <input matInput placeholder="Enter your name" formControlName="fullName">
+                            <mat-error *ngIf="userForm.get('fullName')?.touched && userForm.get('fullName')?.invalid">
+                                <span *ngIf="userForm.get('fullName')?.errors?.['required']">
+                                    name is required
+                                </span>
+                            </mat-error>
                         </mat-form-field>
                     </div>
 
@@ -16,6 +20,14 @@
                         <mat-form-field appearance="outline">
                             <mat-label>Email</mat-label>
                             <input matInput placeholder="Enter your email" formControlName="email">
+                            <mat-error *ngIf="userForm.get('email')?.touched && userForm.get('email')?.invalid">
+                                <span *ngIf="userForm.get('email')?.errors?.['required']">
+                                    email required
+                                </span>
+                                 <span *ngIf="userForm.get('email')?.errors?.['email']">
+                                    check email
+                                </span>
+                            </mat-error>
                         </mat-form-field>
                     </div>
 
@@ -23,82 +35,155 @@
                         <mat-form-field appearance="outline">
                             <mat-label>MobileNo</mat-label>
                             <input matInput placeholder="Enter your mobile number" formControlName="mobileNo">
+                            <mat-error *ngIf="userForm.get('mobileNo')?.touched && userForm.get('mobileNo')?.invalid">
+                                 <span *ngIf="userForm.get('mobileNo')?.errors?.['required']">
+                                    Mobile number is required
+                                </span>
+                                <span *ngIf="userForm.get('mobileNo')?.errors?.['pattern']">
+                                    Enter valid 10-digit number
+                                </span>
+                            </mat-error>
                         </mat-form-field>
                     </div>
                     
                 </div>
-
-
-                 <div class="row">
-                    
-                    <div class="col-4">
+                <div class="row">
+                    <div class="col-6">
                         <mat-form-field appearance="outline">
                             <mat-label>Password</mat-label>
-                            <input matInput placeholder="Enter your password" formControlName="password" type="password">
+                            <input type="password" matInput placeholder="Enter your password" formControlName="password">
+                             <mat-error *ngIf="userForm.get('password')?.touched && userForm.get('password')?.invalid">
+                                 <span *ngIf="userForm.get('password')?.errors?.['required']">
+                                     password is required
+                                </span>
+                                <span *ngIf="userForm.get('password')?.errors?.['minLength']">
+                                    Enter min 6-digit number
+                                </span>
+                            </mat-error>
                         </mat-form-field>
                     </div>
 
-                    <div class="col-4">
+                    <div class="col-6">
                         <mat-form-field appearance="outline">
                             <mat-label>Confirm Password</mat-label>
-                            <input matInput placeholder="Confirm your password" formControlName="confirmPassword" type="password">
+                            <input type="password" matInput placeholder="Confirm your password" formControlName="confirmPassword">
+                              <mat-error *ngIf="userForm.get('confirmPassword')?.touched && userForm.get('confirmPassword')?.hasError('mismatch')">
+                                <span>password do not match</span>
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Driving License Number</mat-label>
+                            <input matInput placeholder="Enter your Number" formControlName="DrivingLicenseNumber">
+                            <mat-error *ngIf="userForm.get('DrivingLicenseNumber')?.touched && userForm.get('DrivingLicenseNumber')?.invalid">
+                                <span *ngIf="userForm.get('DrivingLicenseNumber')?.errors?.['required']">
+                                    Driving License is required
+                                </span>
+                                <span *ngIf="userForm.get('DrivingLicenseNumber')?.errors?.['pattern']">
+                                    Enter valid DL (e.g. MH1234567890123)
+                                </span>
+                            </mat-error>
                         </mat-form-field>
                     </div>
 
-                    <div class="col-4">
-                        <!-- <mat-form-field appearance="outline">
-                            <mat-label>Gender</mat-label>
-                            <input matInput placeholder="Enter your gender" formControlName="gender">
-                        </mat-form-field> -->
+                    <div class="col-6">
                         <mat-form-field appearance="outline">
-                        <mat-label>Gender</mat-label>
-                        <mat-select formControlName="gender">
-                            <mat-option value="male">Male</mat-option>
-                            <mat-option value="female">Female</mat-option>
-                            <mat-option value="other">Other</mat-option>
-                        </mat-select>
-                    </mat-form-field>    
+                            <mat-label>License Expiry Date</mat-label>
+                            <input matInput [matDatepicker]="picker" formControlName="LicenseExpiryDate">
+                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                             <mat-datepicker #picker></mat-datepicker>
+                            <mat-error *ngIf="userForm.get('LicenseExpiryDate')?.touched && userForm.get('LicenseExpiryDate')?.invalid">
+                                <span *ngIf="userForm.get('LicenseExpiryDate')?.errors?.['required']">
+                                    required
+                                </span>
+                            </mat-error>
+                        </mat-form-field>
                     </div>
-                    
-                </div>
-                
-                <div class="row">
-                <div class="col-4">
-                    <mat-form-field appearance="outline" >
-                        <mat-label>Country</mat-label>
-                        <mat-select formControlName="country" (selectionChange)="onCountryChange()">
-                            <mat-option>
-                                <ngx-mat-select-search [formControl]="searchCountry" placeholderLabel="search"> </ngx-mat-select-search>
-                            </mat-option>
-                            <mat-option  *ngFor="let c of filteredCountries()" [value]="c">{{c.countryName}}</mat-option>
-                        </mat-select>
-                    </mat-form-field>    
-                </div>
-
-                <div class="col-4">
-                    <mat-form-field appearance="outline" >
-                        <mat-label>State</mat-label>
-                        <mat-select formControlName="state" (selectionChange)="onStateChange()">
-                            <mat-option>
-                                <ngx-mat-select-search   [formControl]="searchState" placeholderLabel="search"> </ngx-mat-select-search>
-                            </mat-option>
-                            <mat-option  *ngFor="let s of filterState()" [value]="s">{{s.stateName}}</mat-option>
-                        </mat-select>
-                    </mat-form-field>    
-                </div>
-
-                <div class="col-4">
-                    <mat-form-field appearance="outline" >
-                        <mat-label>City</mat-label>
-                        <mat-select formControlName="city">
-                            <mat-option>
-                                <ngx-mat-select-search   [formControl]="searchCity" placeholderLabel="search"> </ngx-mat-select-search>
-                            </mat-option>
-                            <mat-option  *ngFor="let c of filterCity()" [value]="c">{{c.cityName}}</mat-option>
-                        </mat-select>
-                    </mat-form-field>    
                 </div> 
-              </div>
+                <div class="row">
+                    <div class="col-6">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Adhar Number</mat-label>
+                            <input matInput placeholder="Enter your Number" formControlName="AdharNumber">
+                            <mat-error *ngIf="userForm.get('AdharNumber')?.touched && userForm.get('AdharNumber')?.invalid">
+                                <span *ngIf="userForm.get('AdharNumber')?.errors?.['required']">
+                                    required
+                                </span>
+                                  <span *ngIf="userForm.get('AdharNumber')?.errors?.['pattern']">
+                                    min 12 characters
+                                </span>
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="col-6">
+                        <mat-form-field appearance="outline">
+                            <mat-label>pan Number</mat-label>
+                            <input matInput placeholder="Confirm your Number" formControlName="panNumber">
+                            <mat-error *ngIf="userForm.get('panNumber')?.touched && userForm.get('panNumber')?.invalid">
+                                <span *ngIf="userForm.get('panNumber')?.errors?.['required']">
+                                    required
+                                </span>
+                                 <span *ngIf="userForm.get('panNumber')?.errors?.['pattern']">
+                                    Invalid PAN format (Example: ABCDE1234F)
+                                </span>
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div> 
+                <div class="row">
+                    <div class="col-4">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Country</mat-label>
+                            <mat-select formControlName="country" (selectionChange)="onCountryChange()">
+                                <mat-option>
+                                    <ngx-mat-select-search [formControl]="searchCountry" placeholderLabel="search"> </ngx-mat-select-search>
+                                </mat-option>
+                                <mat-option *ngFor="let c of filteredCountries()" [value]="c">{{c.countryName}}</mat-option>
+                            </mat-select>
+                             <mat-error *ngIf="userForm.get('country')?.touched && userForm.get('country')?.invalid">
+                                <span *ngIf="userForm.get('country')?.errors?.['required']">
+                                    required
+                                </span>
+                            </mat-error>
+                        </mat-form-field>    
+                    </div>
+                    <div class="col-4">
+                        <mat-form-field appearance="outline">
+                            <mat-label>State</mat-label>
+                            <mat-select formControlName="state" (selectionChange)="onStateChange()">
+                                <mat-option>
+                                    <ngx-mat-select-search [formControl]="searchState" placeholderLabel="search"> </ngx-mat-select-search>
+                                </mat-option>
+                                <mat-option *ngFor="let s of filterState()" [value]="s">{{s.stateName}}</mat-option>
+                            </mat-select>
+                             <mat-error *ngIf="userForm.get('country')?.touched && userForm.get('country')?.invalid">
+                                <span *ngIf="userForm.get('country')?.errors?.['required']">
+                                   required
+                                </span>
+                            </mat-error>
+                        </mat-form-field>    
+                    </div>
+                    <div class="col-4">
+                        <mat-form-field appearance="outline">
+                            <mat-label>City</mat-label>
+                            <mat-select formControlName="city">
+                                <mat-option>
+                                    <ngx-mat-select-search [formControl]="searchCity" placeholderLabel="search"> </ngx-mat-select-search>
+                                </mat-option>
+                                <mat-option *ngFor="let c of filterCity()" [value]="c">{{c.cityName}}</mat-option>
+                            </mat-select>
+                             <mat-error *ngIf="userForm.get('city')?.touched && userForm.get('city')?.invalid">
+                                <span *ngIf="userForm.get('city')?.errors?.['required']">
+                                   required
+                                </span>
+                            </mat-error>
+                        </mat-form-field>    
+                    </div> 
+                </div>
     
 
     
@@ -106,7 +191,7 @@
     
     
     <div class="container">
-                    <button type="submit" class="btn btn-secondary text-white">Submit</button>
+                    <button class="btn btn-secondary text-white" type="submit">Submit</button>
                 </div>
             </form>
         </mat-card-content>

@@ -7,7 +7,7 @@ import { LayoutComponent } from './pages/layout/layout.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { BookingComponent } from './pages/booking/booking.component';
 import { RegistrationComponent } from './pages/registration/registration.component';
-import { UserListComponent } from './user-list/user-list.component';
+import { authGuard } from './auth.guard';
 // import { authGuard } from './auth.guard';
 
 export const routes: Routes = [
@@ -22,25 +22,16 @@ export const routes: Routes = [
          component:LoginComponent
 
     },
-    {    
-         path:'userList',
-         component:UserListComponent
-
-    },
-
-{    
+   {    
          path:'registration',
          component:RegistrationComponent
-
     },
 
     {
         path:'',
         component:LayoutComponent,
-        // canActivate: [authGuard],       // ✅ protects direct URL access
-    // canActivateChild: [authGuard], 
-      
-
+        canActivate: [authGuard],
+        canActivateChild: [authGuard],      // ✅ protects direct URL access
         children:[
             {path:'dashboard',component:DashboardComponent },
             {path:'vehicle',component:VehicalComponent},

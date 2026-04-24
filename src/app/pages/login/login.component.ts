@@ -23,12 +23,15 @@ export class LoginComponent {
       const {userName,password}=this.loginForm.value
 
        if(userName==='asmita'  &&  password==='1234'){
-         alert('login success!')
+         alert('login success!');
+
+          localStorage.setItem('user','true')
+          
          this.router.navigate(['/dashboard'])
        }else{
           alert('invalid credentials')
        }
-       localStorage.setItem('user','true')
+      
      }
  
 }
