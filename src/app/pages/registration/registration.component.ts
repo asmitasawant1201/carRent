@@ -101,7 +101,7 @@ export class RegistrationComponent {
       c.cityName.toLowerCase().includes(this.searchCity.value?.toLowerCase() || '')
     )
   }
-
+  
   loadData() {
     this.service.getData().subscribe((res) => {
       this.data = res as any[];
@@ -115,23 +115,40 @@ export class RegistrationComponent {
       // console.log('Form Submitted:', this.userForm.value);
       alert("please fill the required fields")
     }
-
+    
     else {
       alert("Form Submitted Successfully!");
       console.log('Form Submitted:', this.userForm.value);
     }
+    
+    const formData = this.userForm.value;
+    
+    const users = JSON.parse(localStorage.getItem('users') || ('[]'))
+    console.log('users',users)
+
+    const exists =  users.some((n:any)=>n.email===formData.email)
+    if(exists){
+      alert('user already exists')
+    }
+    
+    users.push(formData);
+
+    localStorage.setItem('users',JSON.stringify(users))
+   
   }
 
  confirmPasswordValidator (form: FormGroup) {
   const pass = form.get('password')?.value;
   const confirm = form.get('confirmPassword')?.value;
-
-if (pass !== confirm) {
+  
+  if (pass !== confirm) {
     form.get('confirmPassword')?.setErrors({ mismatch: true });
   } else {
     form.get('confirmPassword')?.setErrors(null);
   }
+
 }
+
 }
 
 

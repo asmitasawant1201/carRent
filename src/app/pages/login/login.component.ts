@@ -14,23 +14,41 @@ export class LoginComponent {
                private router:Router){
 
      this.loginForm = this.fb.group({
-      userName:['',Validators.required],
+      email:['',[Validators.required,Validators.email]],
       password:['',Validators.required]
     })
    }
  
      onsubmit(){
-      const {userName,password}=this.loginForm.value
 
-       if(userName==='asmita'  &&  password==='1234'){
-         alert('login success!');
+       const data=this.loginForm.value;
+       
+       const users= JSON.parse(localStorage.getItem('users') || '[]')
+       console.log('users',users)
 
-          localStorage.setItem('user','true')
-          
-         this.router.navigate(['/dashboard'])
-       }else{
-          alert('invalid credentials')
-       }
+      const value = users.find((n:any)=>n.email===data.email)
+
+      if(value){
+        alert('login succesfull')
+        localStorage.setItem('new',value)
+        this.router.navigate(['dashboard'])
+      }else{
+        alert('invalid credintial registration first')
+      }
+
+
+
+      // const {userName,password}=this.loginForm.value
+
+      //  if(userName==='asmita' && password==='1234'){
+      //    alert('login success!');
+
+      //     localStorage.setItem('user','true')
+
+      //    this.router.navigate(['/dashboard'])
+      //  }else{
+      //     alert('invalid credentials')
+      //  }
       
      }
  

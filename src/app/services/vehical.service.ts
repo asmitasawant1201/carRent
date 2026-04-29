@@ -19,7 +19,6 @@ addCar(data:any){
 deleteCar(id:number){
   return this.http.delete(`/api/CarRentalApp/DeleteCarbyCarId?carId=${id}`);
 }
-
 updateCar(data: any){
    return this.http.put(`/api/CarRentalApp/UpdateCar`,data);
 }
